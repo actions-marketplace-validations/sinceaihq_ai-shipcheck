@@ -17,7 +17,7 @@ jobs:
     name: Shipcheck scans itself
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@v7.0.1
 
       - name: Run AI Shipcheck on this repository
         id: shipcheck
@@ -28,7 +28,7 @@ jobs:
 
       - name: Upload the SARIF report to code scanning
         if: always()
-        uses: github/codeql-action/upload-sarif@v3
+        uses: github/codeql-action/upload-sarif@v4
         with:
           sarif_file: ${{ steps.shipcheck.outputs.sarif-file }}
           category: ai-shipcheck
